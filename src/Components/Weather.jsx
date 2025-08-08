@@ -9,17 +9,22 @@ import wind_icon from '../assets/wind.png'
 const Weather = () => {
   const search = async (city) => {
     try {
-      const url = `https://api.weatherstack.com/current?access_key=${import.meta.env.VITE_APP_ID}&query=${city};`
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${import.meta.env.VITE_APP_ID}`;
+
 
       const response = await fetch(url);
       const data = await response.json();
-      console.log(response);
+      console.log(data);
       
     } catch (error) {
       
     }
   }
-  useEffect(()=>{},[])
+  useEffect(()=>{
+    search("London");
+  },[])
+
+
   return (
     <div className='weather'>
       <div className="search-bar">
